@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>YourMovieList</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+	<div>
+		<h1>Welcome to YourMovieList</h1>
+	</div>
+	<div class="p-2">
+		<a class="h2" th:href="@{/movies}">List Movies</a>
+	</div>
+	<div class="p-2">
+		<a class="h2" th:href="@{/movies/new}">Create Movie</a>
+	</div>
+	<div class="p-2">
+		<a class="h2" th:href="@{/users}">List Users</a>
+	</div>
+	<div class="p-2">
+		<a class="h2" th:href="@{/users/new}">Create User</a>
+	</div>
+</div>
+</body>
+</html>

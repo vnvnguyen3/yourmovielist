@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Movie List</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container text-center">
+	<div th:if="${user.id == null}">
+		<h1>Movie List</h1>
+	</div>
+	<div th:unless="${user.id == null}">
+		<h1>Select Movie to Add for [[${user.email}]]</h1>
+	</div>
+	<div>
+		<h3><a th:href="@{/movies/new}">Create Movie</a></h3>
+	</div>
+	<div>
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Year</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="movie : ${listMovies}">
+				<tr>
+					<td>[[${movie.id}]]</td>
+					<td>[[${movie.title}]]</td>
+					<td>[[${movie.year}]]</td>
+					<td th:if="${user.id == null}">
+						<a th:href="@{'/movies/edit/' + ${movie.id}}">Edit</a>
+						<a th:href="@{'/movies/delete/' +${movie.id}}">Delete</a>
+					</td>
+					<td th:unless="${user.id == null}">
+						<a th:href="@{'/users/add/' + ${user.id} + '/' + ${movie.id}}">
+							<button type="submit" class="btn btn-primary">Add Movie</button>							
+						</a>
+					</td>
+				</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
